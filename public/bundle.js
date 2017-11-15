@@ -60,11 +60,48 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(6);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "combineReducers", function() { return __WEBPACK_IMPORTED_MODULE_1__combineReducers__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "bindActionCreators", function() { return __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "applyMiddleware", function() { return __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "compose", function() { return __WEBPACK_IMPORTED_MODULE_4__compose__["a"]; });
+
+
+
+
+
+
+
+/*
+* This is a dummy function to check if the function name has been altered by minification.
+* If the function has been minified and NODE_ENV !== 'production', warn the user.
+*/
+function isCrushed() {}
+
+if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
+  Object(__WEBPACK_IMPORTED_MODULE_5__utils_warning__["a" /* default */])('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
+}
+
+
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -254,13 +291,13 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActionTypes; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = createStore;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_symbol_observable__);
 
@@ -513,7 +550,7 @@ var ActionTypes = {
 }
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -585,7 +622,7 @@ function isPlainObject(value) {
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -599,7 +636,7 @@ var Symbol = __WEBPACK_IMPORTED_MODULE_0__root_js__["a" /* default */].Symbol;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 var g;
@@ -626,7 +663,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -654,7 +691,7 @@ function warning(message) {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -693,38 +730,46 @@ function compose() {
 }
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _redux = __webpack_require__(8);
+var _redux = __webpack_require__(0);
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+var _cartActions = __webpack_require__(27);
 
-var reducer = function reducer() {
-    var _state$books;
+var _bookActions = __webpack_require__(28);
 
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { books: [] };
-    var action = arguments[1];
+var _index = __webpack_require__(24);
 
-    switch (action.type) {
-        case 'POST_BOOK':
-            // let books = state.books.concat(action.payload);
-            // return {books};
-            //another way of writing the same thing above
-            return { books: [].concat(_toConsumableArray(state.books), _toConsumableArray(action.payload)) };
-            break;
-        case 'DELETE_BOOK':
-            return { books: [].concat(_toConsumableArray((_state$books = state.books).splice.apply(_state$books, _toConsumableArray(action.payload.id)))) };
-    }
-    return state;
-};
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import {postToBooks} from './actions/bookActions';
+function postToBooks(book) {
+    console.log('post books is being called!!!');
+    return { type: "POST_BOOK", payload: book };
+}
+
+// function reducers (state={carts:[]},action) {
+//     switch(action.type){
+//     case "ADD_TO_CART":
+//     console.log('cart being called!!!!!')
+//      return {carts:[...state.carts,...action.payload]}
+
+//      break;
+//     }
+//     return 
+
+// }
+
 
 //STEP ONE CREATE STORE!!
 
-var store = (0, _redux.createStore)(reducer);
+var store = (0, _redux.createStore)(_index2.default);
 
 store.subscribe(function () {
     console.log('this is the state ', store.getState());
@@ -738,11 +783,13 @@ store.subscribe(function () {
 // store.dispatch({type:'INCREMENT',payload:1})
 // store.dispatch({type:'INCREMENT',payload:1})
 
-store.dispatch({ type: 'POST_BOOK', payload: [{
+store.dispatch(postToBooks({ type: 'POST_BOOK',
+    payload: [{
         id: 1,
-        title: 'Kong Dong!',
-        description: 'A story of a black porn star!',
-        price: 69.69
+        title: 'Kong',
+        description: 'A fucking story of cool Gorrilla',
+        price: 89.00
+
     }, {
         id: 2,
         title: 'Annie',
@@ -750,71 +797,59 @@ store.dispatch({ type: 'POST_BOOK', payload: [{
         price: 13.00
     }, {
         id: 3,
-        title: 'Off the Boat',
-        description: 'The history of racisim in America',
-        price: 25.00
+        title: 'This is another Thing',
+        descrip: 'Cool story bro',
+        price: 10
+
+    }, {
+
+        id: 4,
+        title: 'A Third Thing',
+        descrip: 'A new story',
+        price: 15
+
     }]
-});
+}));
 
 store.dispatch({ type: "POST_BOOK", payload: [{
-        id: 1,
+        id: 4,
         title: 'The Third Joint!',
         description: 'Re writing history!',
         price: 69.69
     }] });
 
-store.dispatch({ type: "DELETE_BOOK", payload: [{
-        id: 1,
-        title: 'The Third Joint!',
-        description: 'Re writing history!',
-        price: 69.69
-    }] });
+//DELETE
+store.dispatch({ type: "DELETE_BOOK", payload: { id: 1 } });
+store.dispatch({ type: "DELETE_BOOK", payload: { id: 2 } });
 
-//STEP THREE IS TO DEFINE THE REDUCERS
+//UPDATE
+store.dispatch({ type: "UPDATE_BOOK", payload: { id: 3,
+        title: 'Updated Book Title',
+        description: 'This is the story of me building a fullstack react app'
 
-/***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+    }
+});
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(5);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "combineReducers", function() { return __WEBPACK_IMPORTED_MODULE_1__combineReducers__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "bindActionCreators", function() { return __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "applyMiddleware", function() { return __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "compose", function() { return __WEBPACK_IMPORTED_MODULE_4__compose__["a"]; });
+//CART ACTIONS
+//store.dispatch({type:"ADD_TO_CART",payload:{id:1}})
+
+//BELOW IS THE OLD WAY OF CREATING AN ACTION!!!!!!
+//store.dispatch({type:"ADD_TO_CART",payload:[{ id:1,title:'adding to cart title'}]})
 
 
+//BELOW IS THE NEW WAY OF CREATING AN ACTION!!!!
+//NEW ADD TO CART
+store.dispatch((0, _cartActions.addToCart)([{ id: 1 }]));
 
-
-
-
-
-/*
-* This is a dummy function to check if the function name has been altered by minification.
-* If the function has been minified and NODE_ENV !== 'production', warn the user.
-*/
-function isCrushed() {}
-
-if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
-  Object(__WEBPACK_IMPORTED_MODULE_5__utils_warning__["a" /* default */])('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
-}
-
-
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+//store.dispatch(postToBooks([{id:2}]))
+(0, _bookActions.talk)();
 
 /***/ }),
 /* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(13);
 
@@ -874,14 +909,14 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 /* harmony default export */ __webpack_exports__["a"] = (freeGlobal);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(5)))
 
 /***/ }),
 /* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(4);
 
 
 /** Used for built-in method references. */
@@ -1072,7 +1107,7 @@ if (typeof self !== 'undefined') {
 
 var result = (0, _ponyfill2['default'])(root);
 exports['default'] = result;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(19)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(19)(module)))
 
 /***/ }),
 /* 19 */
@@ -1137,9 +1172,9 @@ function symbolObservablePonyfill(root) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = combineReducers;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_warning__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_warning__ = __webpack_require__(6);
 
 
 
@@ -1270,7 +1305,7 @@ function combineReducers(reducers) {
     return hasChanged ? nextState : state;
   };
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 /* 22 */
@@ -1332,7 +1367,7 @@ function bindActionCreators(actionCreators, dispatch) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = applyMiddleware;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compose__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compose__ = __webpack_require__(7);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -1380,6 +1415,168 @@ function applyMiddleware() {
       });
     };
   };
+}
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//import combinreducers to put all reducers together
+
+Object.defineProperty(exports, "__esModule", {
+                              value: true
+});
+
+var _redux = __webpack_require__(0);
+
+var _booksReducers = __webpack_require__(26);
+
+var _cartReducers = __webpack_require__(25);
+
+//import the card reducers 
+
+
+//import books reducers
+console.log('here are the book reducers', _cartReducers.cartReducers);
+
+//Here is where we actually cobine the reducers
+
+exports.default = (0, _redux.combineReducers)({
+
+                              books: _booksReducers.booksReducers,
+                              carts: _cartReducers.cartReducers
+
+});
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.cartReducers = cartReducers;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function cartReducers() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { carts: [] };
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "ADD_TO_CART":
+      console.log('cart being called!!!!!');
+      return { carts: [].concat(_toConsumableArray(state.carts), _toConsumableArray(action.payload)) };
+
+      break;
+  }
+  return state;
+}
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.booksReducers = booksReducers;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function booksReducers() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { books: [] };
+    var action = arguments[1];
+
+    switch (action.type) {
+        case 'POST_BOOK':
+            // let books = state.books.concat(action.payload);
+            // return {books};
+            //another way of writing the same thing above
+            console.log('Post book just got called!!!');
+            return { books: [].concat(_toConsumableArray(state.books), _toConsumableArray(action.payload)) };
+            break;
+        case 'DELETE_BOOK':
+            //CREATE A COPY OF THE BOOKS ARRAY THAT ALREADY HAS BOOKS
+            var currentBookToDelete = [].concat(_toConsumableArray(state.books));
+            //'FIND INDEX' WILL MAP THROUGH AND RETURN INDEX OF BOOK MATCHING ID FROM
+            //ACTION.PAYLOAD.ID AND SET 'indexOfDelete' to example '2' or whatever index passed in
+            //through payload
+            var indexOfDelete = currentBookToDelete.findIndex(function (x) {
+                return x.id === action.payload.id;
+            });
+            //MAKE 2 COPIES OF 'currentBookToDelete' the first to cut and copy the part of the array up to the index
+            //that was passed in through action.payload.id. The second cut and copy half after the index passed 
+            //in by action.payload.id .So essentially taking first half minus passed in index, and second half minus
+            //passed in index. THEN EVERYTHING IS SMUSHED TOGETHER. IE SPREAD OPERATOR. 'MERGED' AND SET TO 'books:'copy
+            //then returning a new array minus the passed index's element!!!
+
+            return { books: [].concat(_toConsumableArray(currentBookToDelete.slice(0, indexOfDelete)), _toConsumableArray(currentBookToDelete.slice(indexOfDelete + 1))) };
+            break;
+        case "UPDATE_BOOK":
+            var currentBookToUpdate = [].concat(_toConsumableArray(state.books));
+            var indexOfUpDate = currentBookToUpdate.findIndex(function (x) {
+                return x.id = action.payload.id;
+            });
+            var newBookeToUpdate = _extends({}, currentBookToUpdate[indexOfUpDate], {
+                title: action.payload.title
+            });
+            console.log('this is the updated book', newBookeToUpdate);
+            return { books: [].concat(_toConsumableArray(currentBookToUpdate.slice(0, indexOfUpDate)), [newBookeToUpdate], _toConsumableArray(currentBookToUpdate.slice(indexOfUpDate + 1))) };
+    }
+    return state;
+}
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.addToCart = addToCart;
+exports.deleteFromCart = deleteFromCart;
+function addToCart(book) {
+    return { type: "ADD_TO_CART", payload: book };
+}
+
+function deleteFromCart(book) {
+    return { type: "DELETE_FROM_CART", payload: book };
+}
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.postToBooks = postToBooks;
+exports.talk = talk;
+function postToBooks(book) {
+    return { type: "POST_BOOK", payload: book };
+}
+
+function talk() {
+    console.log('Holllllaaaaaaaa!!!!!!!');
 }
 
 /***/ })
