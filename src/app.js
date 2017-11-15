@@ -1,12 +1,15 @@
 'use strict';
-import {createStore} from 'redux';
+import {applyMiddleware,createStore} from 'redux';
+import logger from 'redux-logger';
 
 //import {postToBooks} from './actions/bookActions';
 
 
 import {addToCart} from './actions/cartActions';
-import {postToBooks,deleteBooks,updateBooks} from './actions/bookActions'
-import {talk} from './actions/bookActions'
+import {postToBooks,deleteBooks,updateBooks,talk} from './actions/bookActions'
+//import {talk} from './actions/bookActions'
+
+
 
 import reducers from './reducers/index';
 
@@ -33,14 +36,19 @@ import reducers from './reducers/index';
 
 
 
+
+
+
+const middleware = applyMiddleware(logger);
+
 //STEP ONE CREATE STORE!!
+const store = createStore(reducers,middleware);
 
-var store = createStore(reducers);
-
-store.subscribe(function(){
-    console.log('this is the state ',store.getState())
-    //console.log('this is the state ',store.getState()[1].price)
-})
+//DONT NEED BELOW ANYMORE BECAUSE INSTALLED redux-logger
+// store.subscribe(function(){
+//     console.log('this is the state ',store.getState())
+//     //console.log('this is the state ',store.getState()[1].price)
+// })
 
 
 //STEP TWO CREATE AND DISPACH ACTIONS
@@ -116,39 +124,106 @@ store.subscribe(function(){
 
 //BELOW IS THE NEW WAY OF CREATING AN ACTION!!!!
 //NEW ADD TO CART
-  store.dispatch(postToBooks([
-    {
+
+
+
+
+
+
+  //DELETE BOOK -TIP TO REMEMMBER!!-WHAT EVER THE action.payload in Reducers is
+  //IS HOW YOU SHOULD scruture your argument!!! VERY IMPORTANT WILL SCREW UP ARGUMENT RESULTS
+  //IF YOU DONT!!! SO CHECK REDUCER action.payload first and match it!!
+  //example "DELETE_BOOK" return {books:[...state.books,...action.payload]}; 
+  //BELOW SHOULD 
+//   BE this first one:
+// 
+//   store.dispatch(postToBooks(
+//  [
+//    {
+//      id:1,
+//      title:'Any Title',
+//      descrip:'whatever',
+//      price:20.00
+//   },
+//      id:2,
+//      title:'Amptjer Title',
+//      descrip:'Yea whatever',
+//      price:22.00 
+//   ]
+//)
+// 
+//NOT this second !!! store.dispatch(postToBooks(
+    //{
+   //       id:1,
+    //      title:'Any Title',
+    //      descrip:'whatever',
+    //      price:20.00,
+ //},
+   //{
+    //      id:2,
+    //      title:'Amptjer Title',
+    //      descrip:'Yea whatever',
+    //      price:22.00 
+
+//}
+  //)
+// )
+
+// The correct approach first above is passing in an array of objects
+//as opposed to the second who is just passing an object look at the aciton.payload
+//from reducer its inside a array!! therefore you need to pass in array here!!
+// if it was somethingl like book:action.payload.id 
+// then pass in like this  store.dispatch(deleteBooks({id:2})); notice no array!!!
+//just object. BE FREAKING CARFULE OR YOU WILL WONDER WHY ITS NOT WORKING!!!
+
+//POST TO BOOKS
+  store.dispatch(
+      postToBooks(
+    [{
         id:1,
-        title:'Kong',
-        description:'A fucking story of cool Gorrilla',
-        price:89.00
-       
-    },
-    {
-        id:2,
-        title:'Annie',
-        description:'The son will come out tomorrow',
-        price:13.00
-    },
-    {
-        id:3,
         title:'This is another Thing',
         descrip:'Cool story bro',
         price:10
        
         },
         {
+        id:2,
+        title:'Stussy Crew',
+        descrip:'Yep thats it',
+        price:27.00
+           
+        },
+        {
+        id:3,
+        title:'Three AMigos',
+        descrip:'Yep thats it',
+        price:27.00
             
-        id:4,
-        title:'A Third Thing',
-        descrip:'A new story',
-        price:15
+        }
+
         
-     }
 
-    ]))
-    store.dispatch(addToCart([{id:1}]));
+    ]
+  )
+)
+
+
+    store.dispatch(deleteBooks({id:2}));
     
+    
+   //UPDATE BOOK
+    store.dispatch(updateBooks(
+        
+            {
+                id:1,
+                title:'Change the title!!'
+            }
+        
+    ))
 
-//store.dispatch(postToBooks([{id:2}]))
+    //ADD TO CART
+    store.dispatch(addToCart([{id:1}]));
+   
+
+//just to see if the function would import
 talk();

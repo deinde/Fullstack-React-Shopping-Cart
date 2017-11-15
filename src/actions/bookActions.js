@@ -1,4 +1,16 @@
 'use strict'
+
+
+//UPDATE BOOK
+export function updateBooks(id){
+    return {
+        type:"UPDATE_BOOK",
+        payload:id
+    }
+}
+
+
+
 //POST BOOK
 export function postToBooks(book){
     return {
@@ -15,13 +27,6 @@ export function deleteBooks(id){
     }
 }
 
-//UPDATE BOOK
-export function udpdateBooks(id){
-    return {
-        type:"UPDATE_BOOK",
-        payload:id
-    }
-}
 
 
 
