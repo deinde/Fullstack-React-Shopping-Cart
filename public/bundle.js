@@ -60,21 +60,173 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _redux = __webpack_require__(1);
+
+var _cartActions = __webpack_require__(28);
+
+var _bookActions = __webpack_require__(24);
+
+var _index = __webpack_require__(25);
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//  function postToBooks(book){
+//      console.log('post books is being called!!!')
+//     return {type:"POST_BOOK",payload:book}
+// }
+
+
+// function reducers (state={carts:[]},action) {
+//     switch(action.type){
+//     case "ADD_TO_CART":
+//     console.log('cart being called!!!!!')
+//      return {carts:[...state.carts,...action.payload]}
+
+//      break;
+//     }
+//     return 
+
+// }
+
+
+//STEP ONE CREATE STORE!!
+
+//import {postToBooks} from './actions/bookActions';
+
+
+var store = (0, _redux.createStore)(_index2.default);
+
+store.subscribe(function () {
+    console.log('this is the state ', store.getState());
+    //console.log('this is the state ',store.getState()[1].price)
+});
+
+//STEP TWO CREATE AND DISPACH ACTIONS
+
+
+// store.dispatch({type:'INCREMENT',payload:1})
+// store.dispatch({type:'INCREMENT',payload:1})
+// store.dispatch({type:'INCREMENT',payload:1})
+
+// store.dispatch(postToBooks({type:'POST_BOOK',
+// payload:[
+// {
+//     id:1,
+//     title:'Kong',
+//     description:'A fucking story of cool Gorrilla',
+//     price:89.00
+
+// },
+// {
+//     id:2,
+//     title:'Annie',
+//     description:'The son will come out tomorrow',
+//     price:13.00
+// },
+// {
+//     id:3,
+//     title:'This is another Thing',
+//     descrip:'Cool story bro',
+//     price:10
+
+//     },
+//     {
+
+//     id:4,
+//     title:'A Third Thing',
+//     descrip:'A new story',
+//     price:15
+
+//  }
+
+// ]
+// }))
+
+// store.dispatch({type:"POST_BOOK",payload:[{
+//     id:4,
+//     title:'The Third Joint!',
+//     description:'Re writing history!',
+//     price:69.69
+// }]})
+
+
+//DELETE
+// store.dispatch({type:"DELETE_BOOK",payload:{ id:1}})
+// store.dispatch({type:"DELETE_BOOK",payload:{ id:2}})
+
+//UPDATE
+// store.dispatch({type:"UPDATE_BOOK",payload:
+// {id:3,
+//  title:'Updated Book Title',
+//  description:'This is the story of me building a fullstack react app'
+
+// }
+// })
+
+
+//CART ACTIONS
+//store.dispatch({type:"ADD_TO_CART",payload:{id:1}})
+
+//BELOW IS THE OLD WAY OF CREATING AN ACTION!!!!!!
+//store.dispatch({type:"ADD_TO_CART",payload:[{ id:1,title:'adding to cart title'}]})
+
+
+//BELOW IS THE NEW WAY OF CREATING AN ACTION!!!!
+//NEW ADD TO CART
+store.dispatch((0, _bookActions.postToBooks)([{
+    id: 1,
+    title: 'Kong',
+    description: 'A fucking story of cool Gorrilla',
+    price: 89.00
+
+}, {
+    id: 2,
+    title: 'Annie',
+    description: 'The son will come out tomorrow',
+    price: 13.00
+}, {
+    id: 3,
+    title: 'This is another Thing',
+    descrip: 'Cool story bro',
+    price: 10
+
+}, {
+
+    id: 4,
+    title: 'A Third Thing',
+    descrip: 'A new story',
+    price: 15
+
+}]));
+store.dispatch((0, _cartActions.addToCart)([{ id: 1 }]));
+
+//store.dispatch(postToBooks([{id:2}]))
+(0, _bookActions.talk)();
+
+/***/ }),
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(2);
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(7);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "combineReducers", function() { return __WEBPACK_IMPORTED_MODULE_1__combineReducers__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "bindActionCreators", function() { return __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__["a"]; });
@@ -98,10 +250,10 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 }
 
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -291,13 +443,13 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActionTypes; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = createStore;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_symbol_observable__);
 
@@ -550,7 +702,7 @@ var ActionTypes = {
 }
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -622,7 +774,7 @@ function isPlainObject(value) {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -636,7 +788,7 @@ var Symbol = __WEBPACK_IMPORTED_MODULE_0__root_js__["a" /* default */].Symbol;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 var g;
@@ -663,7 +815,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -691,7 +843,7 @@ function warning(message) {
 }
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -730,126 +882,11 @@ function compose() {
 }
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _redux = __webpack_require__(0);
-
-var _cartActions = __webpack_require__(27);
-
-var _bookActions = __webpack_require__(28);
-
-var _index = __webpack_require__(24);
-
-var _index2 = _interopRequireDefault(_index);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//import {postToBooks} from './actions/bookActions';
-function postToBooks(book) {
-    console.log('post books is being called!!!');
-    return { type: "POST_BOOK", payload: book };
-}
-
-// function reducers (state={carts:[]},action) {
-//     switch(action.type){
-//     case "ADD_TO_CART":
-//     console.log('cart being called!!!!!')
-//      return {carts:[...state.carts,...action.payload]}
-
-//      break;
-//     }
-//     return 
-
-// }
-
-
-//STEP ONE CREATE STORE!!
-
-var store = (0, _redux.createStore)(_index2.default);
-
-store.subscribe(function () {
-    console.log('this is the state ', store.getState());
-    //console.log('this is the state ',store.getState()[1].price)
-});
-
-//STEP TWO CREATE AND DISPACH ACTIONS
-
-
-// store.dispatch({type:'INCREMENT',payload:1})
-// store.dispatch({type:'INCREMENT',payload:1})
-// store.dispatch({type:'INCREMENT',payload:1})
-
-store.dispatch(postToBooks({ type: 'POST_BOOK',
-    payload: [{
-        id: 1,
-        title: 'Kong',
-        description: 'A fucking story of cool Gorrilla',
-        price: 89.00
-
-    }, {
-        id: 2,
-        title: 'Annie',
-        description: 'The son will come out tomorrow',
-        price: 13.00
-    }, {
-        id: 3,
-        title: 'This is another Thing',
-        descrip: 'Cool story bro',
-        price: 10
-
-    }, {
-
-        id: 4,
-        title: 'A Third Thing',
-        descrip: 'A new story',
-        price: 15
-
-    }]
-}));
-
-store.dispatch({ type: "POST_BOOK", payload: [{
-        id: 4,
-        title: 'The Third Joint!',
-        description: 'Re writing history!',
-        price: 69.69
-    }] });
-
-//DELETE
-store.dispatch({ type: "DELETE_BOOK", payload: { id: 1 } });
-store.dispatch({ type: "DELETE_BOOK", payload: { id: 2 } });
-
-//UPDATE
-store.dispatch({ type: "UPDATE_BOOK", payload: { id: 3,
-        title: 'Updated Book Title',
-        description: 'This is the story of me building a fullstack react app'
-
-    }
-});
-
-//CART ACTIONS
-//store.dispatch({type:"ADD_TO_CART",payload:{id:1}})
-
-//BELOW IS THE OLD WAY OF CREATING AN ACTION!!!!!!
-//store.dispatch({type:"ADD_TO_CART",payload:[{ id:1,title:'adding to cart title'}]})
-
-
-//BELOW IS THE NEW WAY OF CREATING AN ACTION!!!!
-//NEW ADD TO CART
-store.dispatch((0, _cartActions.addToCart)([{ id: 1 }]));
-
-//store.dispatch(postToBooks([{id:2}]))
-(0, _bookActions.talk)();
-
-/***/ }),
 /* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(13);
 
@@ -909,14 +946,14 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 /* harmony default export */ __webpack_exports__["a"] = (freeGlobal);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(5)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(6)))
 
 /***/ }),
 /* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(5);
 
 
 /** Used for built-in method references. */
@@ -1107,7 +1144,7 @@ if (typeof self !== 'undefined') {
 
 var result = (0, _ponyfill2['default'])(root);
 exports['default'] = result;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(19)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(19)(module)))
 
 /***/ }),
 /* 19 */
@@ -1172,9 +1209,9 @@ function symbolObservablePonyfill(root) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = combineReducers;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_warning__ = __webpack_require__(7);
 
 
 
@@ -1305,7 +1342,7 @@ function combineReducers(reducers) {
     return hasChanged ? nextState : state;
   };
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
 /* 22 */
@@ -1367,7 +1404,7 @@ function bindActionCreators(actionCreators, dispatch) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = applyMiddleware;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compose__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compose__ = __webpack_require__(8);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -1423,6 +1460,48 @@ function applyMiddleware() {
 
 "use strict";
 
+//POST BOOK
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.postToBooks = postToBooks;
+exports.deleteBooks = deleteBooks;
+exports.udpdateBooks = udpdateBooks;
+exports.talk = talk;
+function postToBooks(book) {
+    return {
+        type: "POST_BOOK",
+        payload: book
+    };
+}
+
+//DELETE BOOK
+function deleteBooks(id) {
+    return {
+        type: "DELETE_BOOK",
+        payload: id
+    };
+}
+
+//UPDATE BOOK
+function udpdateBooks(id) {
+    return {
+        type: "UPDATE_BOOK",
+        payload: id
+    };
+}
+
+function talk() {
+    console.log('Holllllaaaaaaaa!!!!!!!');
+}
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 //import combinreducers to put all reducers together
 
@@ -1430,11 +1509,11 @@ Object.defineProperty(exports, "__esModule", {
                               value: true
 });
 
-var _redux = __webpack_require__(0);
+var _redux = __webpack_require__(1);
 
 var _booksReducers = __webpack_require__(26);
 
-var _cartReducers = __webpack_require__(25);
+var _cartReducers = __webpack_require__(27);
 
 //import the card reducers 
 
@@ -1450,34 +1529,6 @@ exports.default = (0, _redux.combineReducers)({
                               carts: _cartReducers.cartReducers
 
 });
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.cartReducers = cartReducers;
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function cartReducers() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { carts: [] };
-  var action = arguments[1];
-
-  switch (action.type) {
-    case "ADD_TO_CART":
-      console.log('cart being called!!!!!');
-      return { carts: [].concat(_toConsumableArray(state.carts), _toConsumableArray(action.payload)) };
-
-      break;
-  }
-  return state;
-}
 
 /***/ }),
 /* 26 */
@@ -1547,16 +1598,24 @@ function booksReducers() {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.addToCart = addToCart;
-exports.deleteFromCart = deleteFromCart;
-function addToCart(book) {
-    return { type: "ADD_TO_CART", payload: book };
-}
+exports.cartReducers = cartReducers;
 
-function deleteFromCart(book) {
-    return { type: "DELETE_FROM_CART", payload: book };
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function cartReducers() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { carts: [] };
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "ADD_TO_CART":
+      console.log('cart being called!!!!!');
+      return { carts: [].concat(_toConsumableArray(state.carts), _toConsumableArray(action.payload)) };
+
+      break;
+  }
+  return state;
 }
 
 /***/ }),
@@ -1569,14 +1628,14 @@ function deleteFromCart(book) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.postToBooks = postToBooks;
-exports.talk = talk;
-function postToBooks(book) {
-    return { type: "POST_BOOK", payload: book };
+exports.addToCart = addToCart;
+exports.deleteFromCart = deleteFromCart;
+function addToCart(book) {
+    return { type: "ADD_TO_CART", payload: book };
 }
 
-function talk() {
-    console.log('Holllllaaaaaaaa!!!!!!!');
+function deleteFromCart(book) {
+    return { type: "DELETE_FROM_CART", payload: book };
 }
 
 /***/ })
