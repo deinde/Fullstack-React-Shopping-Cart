@@ -1,7 +1,12 @@
 'use strict';
 import {applyMiddleware,createStore} from 'redux';
 import logger from 'redux-logger';
+//import react
+import React from 'react';
+import {render} from 'react-dom';
+//import ReactDOM from 'react-dom';
 
+import BooksList from './components/pages/booksList';
 //import {postToBooks} from './actions/bookActions';
 
 
@@ -9,11 +14,22 @@ import {addToCart} from './actions/cartActions';
 import {postToBooks,deleteBooks,updateBooks,talk} from './actions/bookActions'
 //import {talk} from './actions/bookActions'
 
-
+// class BooksList extends React.Component{
+//   render(){
+//     return(
+//       <div>
+//        <h1>How Do You Do React</h1>
+//       </div>
+//       );
+//   }
+// }
 
 import reducers from './reducers/index';
 
+render(
+  <BooksList />,document.getElementById('app')
 
+  );
 
 //  function postToBooks(book){
 //      console.log('post books is being called!!!')
