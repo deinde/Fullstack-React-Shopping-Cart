@@ -1,46 +1,40 @@
 'use strict';
-import {applyMiddleware,createStore} from 'redux';
-import logger from 'redux-logger';
 //import react
 import React from 'react';
 import {render} from 'react-dom';
-import Provider from 'react-redux';
+import {Provider} from 'react-redux';
+
+import {applyMiddleware,createStore} from 'redux';
+import logger from 'redux-logger';
+
+
+import reducers from './reducers/index';
+
 import BooksList from './components/pages/booksList';
 //import {postToBooks} from './actions/bookActions';
 
 
 import {addToCart} from './actions/cartActions';
-import {postToBooks,deleteBooks,updateBooks,talk} from './actions/bookActions'
-//import {talk} from './actions/bookActions'
+import {postToBooks,deleteBooks,updateBooks,talk} from './actions/bookActions';
+//import {talk} from './actions/bookActions';
+
+//Create the store
+const middleware = applyMiddleware(logger);
+const store = createStore(reducers,middleware);
 
 
 
-import reducers from './reducers/index';
+
 
 render(
-  <Provider store={store}>
-    <BooksList />,document.getElementById('app')
-  </Provider>
+  <Provider store = {store} >
+    <BooksList />
+  </Provider>, document.getElementById('app')
+
 
   );
 
-//  function postToBooks(book){
-//      console.log('post books is being called!!!')
-//     return {type:"POST_BOOK",payload:book}
-// }
-
-
-// function reducers (state={carts:[]},action) {
-//     switch(action.type){
-//     case "ADD_TO_CART":
-//     console.log('cart being called!!!!!')
-//      return {carts:[...state.carts,...action.payload]}
-           
-//      break;
-//     }
-//     return 
-   
-// }
+ 
 
 
 
@@ -48,12 +42,12 @@ render(
 
 
 
-const middleware = applyMiddleware(logger);
 
-//STEP ONE CREATE STORE!!
-const store = createStore(reducers,middleware);
 
-//DONT NEED BELOW ANYMORE BECAUSE INSTALLED redux-logger
+ ///
+
+
+// //DONT NEED BELOW ANYMORE BECAUSE INSTALLED redux-logger
 // store.subscribe(function(){
 //     console.log('this is the state ',store.getState())
 //     //console.log('this is the state ',store.getState()[1].price)
@@ -186,52 +180,52 @@ const store = createStore(reducers,middleware);
 //just object. BE FREAKING CARFULE OR YOU WILL WONDER WHY ITS NOT WORKING!!!
 
 //POST TO BOOKS
-  store.dispatch(
-      postToBooks(
-    [{
-        id:1,
-        title:'This is another Thing',
-        descrip:'Cool story bro',
-        price:10
+//   store.dispatch(
+//       postToBooks(
+//     [{
+//         id:1,
+//         title:'This is another Thing',
+//         descrip:'Cool story bro',
+//         price:10
        
-        },
-        {
-        id:2,
-        title:'Stussy Crew',
-        descrip:'Yep thats it',
-        price:27.00
+//         },
+//         {
+//         id:2,
+//         title:'Stussy Crew',
+//         descrip:'Yep thats it',
+//         price:27.00
            
-        },
-        {
-        id:3,
-        title:'Three AMigos',
-        descrip:'Yep thats it',
-        price:27.00
+//         },
+//         {
+//         id:3,
+//         title:'Three AMigos',
+//         descrip:'Yep thats it',
+//         price:27.00
             
-        }
+//         }
 
         
 
-    ]
-  )
-)
+//     ]
+//   )
+// )
 
 
-    store.dispatch(deleteBooks({id:2}));
+   //  store.dispatch(deleteBooks({id:2}));
     
     
-   //UPDATE BOOK
-    store.dispatch(updateBooks(
+   // //UPDATE BOOK
+   //  store.dispatch(updateBooks(
         
-            {
-                id:1,
-                title:'Change the title!!'
-            }
+   //          {
+   //              id:1,
+   //              title:'Change the title!!'
+   //          }
         
-    ))
+   //  ))
 
-    //ADD TO CART
-    store.dispatch(addToCart([{id:1}]));
+   //  //ADD TO CART
+   //  store.dispatch(addToCart([{id:1}]));
    
 
 //just to see if the function would import

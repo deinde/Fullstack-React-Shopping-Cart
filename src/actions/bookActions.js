@@ -27,9 +27,15 @@ export function deleteBooks(id){
     }
 }
 
+//GET BOOK
 
-
+export function getBooks(){
+    return{ 
+       type:"GET_BOOKS"
+    }
+}
 
 export function talk(){
     console.log('Holllllaaaaaaaa!!!!!!!')
 }
+

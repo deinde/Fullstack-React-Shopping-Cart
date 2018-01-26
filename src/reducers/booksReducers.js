@@ -2,15 +2,49 @@
 
 
 
-export function booksReducers(state={books:[]},action){
+export function booksReducers(state={
+    books:[
+    {
+        id:1,
+        title:'This is another Thing',
+        descrip:'Cool story bro',
+        price:100
+       
+        },
+        {
+        id:2,
+        title:'Stussy Crew',
+        descrip:'Yep thats it',
+        price:47.00
+           
+        },
+        {
+        id:3,
+        title:'Three AMigos',
+        descrip:'Yep thats it',
+        price:207.00
+            
+        }
+]
+},action){
     switch(action.type){
         case'POST_BOOK':
         // let books = state.books.concat(action.payload);
         // return {books};
         //another way of writing the same thing above
         console.log('Post book just got called!!!')
-        return {books:[...state.books,...action.payload]};
+        return { ...state, books:[...state.books]};
         break;
+
+         case'GET_BOOKS':
+        // let books = state.books.concat(action.payload);
+        // return {books};
+        //another way of writing the same thing above
+        console.log('GET_BOOKS just got called!!!')
+        return { ...state, books:[...state.books]};
+        break;
+
+
         case 'DELETE_BOOK':
         //CREATE A COPY OF THE BOOKS ARRAY THAT ALREADY HAS BOOKS
         let currentBookToDelete = [...state.books];
