@@ -12,7 +12,7 @@ export function updateBooks(id){
 
 
 //POST BOOK
-export function postToBooks(book){
+export function postBooks(book){
     return {
         type:"POST_BOOK",
         payload:book

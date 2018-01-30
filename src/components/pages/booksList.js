@@ -6,6 +6,8 @@ import {bindActionCreators} from 'redux';
 import {getBooks} from '../../actions/bookActions';
 import {Grid,Col,Row,Button} from 'react-bootstrap';
 import BookItem from './bookItem';
+import BookForm from './bookForm';
+import Cart from './carts'
 
 // function getBooks(){
 //     return{ 
@@ -36,22 +38,28 @@ class BooksList extends React.Component{
             //   <h2>{booksArr.price}</h2>
             //   <Button bsStyle='primary'>Buy Now</Button>
             // </div>
-            <Col xs={12} sm={6} md={4} key={booksArr.id}>
-             <BookItem
-             	id:{booksArr.id},
-             	title:{booksArr.title},
-             	description:{booksArr.description},
-             	price:{booksArr.price}
+            <Col key={booksArr.id} xs={12} sm={6} md={4}>
+             <BookItem 
+             	id={booksArr.id}
+             	title={booksArr.title}
+             	description={booksArr.description}
+             	price={booksArr.price}
              />
-            </Col>
+            </Col> 
 
         	)
       })
     return(
 
          <Grid>
-          <Row style={{marginTop:'15px'}}>
-           {bookList}
+         <Row>
+          <Cart/>
+         </Row>
+          <Row>
+          	<Col xs={12} sm={6}>
+          	 <BookForm/>
+          	</Col>
+          	 {bookList}
           </Row>
          </Grid>
     	)

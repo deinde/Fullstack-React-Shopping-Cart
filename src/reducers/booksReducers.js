@@ -7,21 +7,21 @@ export function booksReducers(state={
     {
         id:1,
         title:'This is another Thing',
-        descrip:'Cool story bro',
+        description:'Cool story bro',
         price:100
        
         },
         {
         id:2,
         title:'Stussy Crew',
-        descrip:'Yep thats it',
+        description:'Yep thats it',
         price:47.00
            
         },
         {
         id:3,
         title:'Three AMigos',
-        descrip:'Yep thats it',
+        description:'Yep thats it',
         price:207.00
             
         }
@@ -32,22 +32,21 @@ export function booksReducers(state={
         // let books = state.books.concat(action.payload);
         // return {books};
         //another way of writing the same thing above
-        console.log('Post book just got called!!!')
-        return { ...state, books:[...state.books]};
+        console.log('Post book just got called!!!',state.books)
+        return { books:[...state, ...action.payload]};
         break;
 
          case'GET_BOOKS':
-        // let books = state.books.concat(action.payload);
-        // return {books};
-        //another way of writing the same thing above
+        
+
         console.log('GET_BOOKS just got called!!!')
-        return { ...state, books:[...state.books]};
+        return { ...state, books:[...state.books]}
         break;
 
 
         case 'DELETE_BOOK':
         //CREATE A COPY OF THE BOOKS ARRAY THAT ALREADY HAS BOOKS
-        let currentBookToDelete = [...state.books];
+        let currentBookToDelete = [...state.books]
         //'FIND INDEX' WILL MAP THROUGH AND RETURN INDEX OF BOOK MATCHING ID FROM
         //ACTION.PAYLOAD.ID AND SET 'indexOfDelete' to example '2' or whatever index passed in
         //through payload
