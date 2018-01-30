@@ -5,6 +5,23 @@ import {connect} from 'react-redux';
 import {Panel,Well, Col, Row, Button} from 'react-bootstrap';
 
 
+
+
+const header ={
+    height:"52px",
+    background: "blue",
+    fontSize:"2rem",
+    color: "#fff",
+    padding: "1rem 0 0 3rem",
+    borderRadius:"7px"
+}
+
+
+const panelPrimary ={
+    borderColor: "none"
+}
+
+
 class Cart extends React.Component{
 	render(){
 		if(this.props.cart[0]){
@@ -40,7 +57,8 @@ class Cart extends React.Component{
    		)
    	})
    	return(
-      <Panel header='Cart' bsStyle='primary'>
+      <Panel header='Cart'  style={panelPrimary}>
+      <div style={header}>Cart</div>
       	{cartItemList}
       </Panel>
    	)

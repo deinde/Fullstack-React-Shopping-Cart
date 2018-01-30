@@ -21450,7 +21450,7 @@ function booksReducers() {
             // return {books};
             //another way of writing the same thing above
             console.log('Post book just got called!!!', state.books);
-            return { books: [].concat(_toConsumableArray(state), _toConsumableArray(action.payload)) };
+            return { books: [].concat(_toConsumableArray(state.books), _toConsumableArray(action.payload)) };
             break;
 
         case 'GET_BOOKS':
@@ -41382,8 +41382,6 @@ var _carts2 = _interopRequireDefault(_carts);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -41410,12 +41408,12 @@ var BookItem = function (_React$Component) {
 	_createClass(BookItem, [{
 		key: 'handleCart',
 		value: function handleCart() {
-			var book = [].concat(_toConsumableArray(this.props.cart), _toConsumableArray({
+			var book = [this.props.cart, {
 				id: this.props.id,
 				title: this.props.title,
 				description: this.props.description,
 				price: this.props.price
-			}));
+			}];
 			this.props.addToCart(book);
 		}
 	}, {
@@ -41632,6 +41630,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var header = {
+  height: "52px",
+  background: "blue",
+  fontSize: "2rem",
+  color: "#fff",
+  padding: "1rem 0 0 3rem",
+  borderRadius: "7px"
+};
+
+var panelPrimary = {
+  borderColor: "none"
+};
+
 var Cart = function (_React$Component) {
   _inherits(Cart, _React$Component);
 
@@ -41693,7 +41704,12 @@ var Cart = function (_React$Component) {
       });
       return _react2.default.createElement(
         _reactBootstrap.Panel,
-        { header: 'Cart', bsStyle: 'primary' },
+        { header: 'Cart', style: panelPrimary },
+        _react2.default.createElement(
+          'div',
+          { style: header },
+          'Cart'
+        ),
         cartItemList
       );
     }

@@ -21,7 +21,7 @@ let pad ={
 
 class BookItem extends React.Component{
 	handleCart(){
-		const book=[...this.props.cart, ...{
+		const book=[this.props.cart, {
 			id:this.props.id,
 			title:this.props.title,
 			description:this.props.description,

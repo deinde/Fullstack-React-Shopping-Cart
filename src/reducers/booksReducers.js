@@ -33,7 +33,7 @@ export function booksReducers(state={
         // return {books};
         //another way of writing the same thing above
         console.log('Post book just got called!!!',state.books)
-        return { books:[...state, ...action.payload]};
+        return { books:[...state.books, ...action.payload]};
         break;
 
          case'GET_BOOKS':
